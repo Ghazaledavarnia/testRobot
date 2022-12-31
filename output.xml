@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221220 11:53:31.130" rpa="false" schemaversion="3">
+<suite id="s1" name="createSystemCode" source="c:\Users\Ghazaleh\Desktop\testNew\createSystemCode.robot">
+<test id="s1-t1" name="create_product_lessthan_minLenght" line="30">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221220 11:53:32.373" level="INFO">Creating Session using : alias=session, url=https://devapi.aasood.com/product/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221220 11:53:32.372" endtime="20221220 11:53:32.376"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>${systemCodes_list}</var>
+<arg>2000010010001002001017003</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20221220 11:53:32.378" level="INFO">${systemCodes_list} = ['2000010010001002001017003']</msg>
+<status status="PASS" starttime="20221220 11:53:32.377" endtime="20221220 11:53:32.378"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>systemCodes=${systemCodes_list}</arg>
+<arg>name= mo</arg>
+<arg>urlName=string</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221220 11:53:32.379" level="INFO">${body} = {'systemCodes': ['2000010010001002001017003'], 'name': ' mo', 'urlName': 'string'}</msg>
+<status status="PASS" starttime="20221220 11:53:32.379" endtime="20221220 11:53:32.379"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221220 11:53:32.381" level="INFO">${headers} = {'content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20221220 11:53:32.380" endtime="20221220 11:53:32.381"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/product/create_product</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20221220 11:53:32.382" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20221220 11:54:50.864" level="INFO">POST Request : url=https://devapi.aasood.com/product/api/v1/product/create_product (redirected) 
+ path_url=/product/api/v1/product/create_product 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-Type': 'application/json', 'Content-Length': '82'} 
+ body={"systemCodes": ["2000010010001002001017003"], "name": " mo", "urlName": "string"} 
+ </msg>
+<msg timestamp="20221220 11:54:50.865" level="INFO">POST Response : url=http://devapi.aasood.com/product/api/v1/product/create_product/ 
+ status=400, reason=Bad Request 
+ headers={'Content-Length': '48', 'Access-Control-Allow-Headers': '*', 'Access-Control-Allow-Origin': '*', 'Access-Control-Expose-Headers': '*', 'Ar-Atime': '0.114', 'Ar-Request-Id': '838d0ea9c4bdfb9f1a6b4eff4bd39323', 'Ar-Sid': '2061', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Date': 'Tue, 20 Dec 2022 08:24:49 GMT', 'Keep-Alive': 'timeout=4', 'Proxy-Connection': 'keep-alive', 'Server': 'ArvanCloud'} 
+ body={"error":"system codes are not found in kowsar"} 
+ </msg>
+<msg timestamp="20221220 11:54:50.866" level="INFO">c:\ProgramData\robocorp\ht\dd59308_b1f3c24_1c0bc041\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host '127.0.0.1'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20221220 11:54:50.868" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20221220 11:53:32.382" endtime="20221220 11:54:50.868"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221220 11:54:50.879" level="INFO">${status_code} = 400</msg>
+<status status="PASS" starttime="20221220 11:54:50.874" endtime="20221220 11:54:50.880"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>400</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221220 11:54:50.881" endtime="20221220 11:54:50.882"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221220 11:54:50.884" level="INFO">${res_body} = {"error":"system codes are not found in kowsar"}</msg>
+<status status="PASS" starttime="20221220 11:54:50.882" endtime="20221220 11:54:50.885"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>name must be at least 3 characters</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<msg timestamp="20221220 11:54:50.890" level="FAIL">'{"error":"system codes are not found in kowsar"}' does not contain 'name must be at least 3 characters'</msg>
+<status status="FAIL" starttime="20221220 11:54:50.887" endtime="20221220 11:54:50.891"/>
+</kw>
+<status status="FAIL" starttime="20221220 11:53:32.371" endtime="20221220 11:54:50.896">'{"error":"system codes are not found in kowsar"}' does not contain 'name must be at least 3 characters'</status>
+</test>
+<status status="FAIL" starttime="20221220 11:53:31.145" endtime="20221220 11:54:50.902"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="createSystemCode">createSystemCode</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20221220 11:53:32.382" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>
