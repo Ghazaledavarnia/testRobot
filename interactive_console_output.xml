@@ -1,64 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221214 14:23:36.898" rpa="false" schemaversion="3">
-<suite id="s1" name="Robot Interactive Console" source="c:\Users\Ghazaleh\.vscode\extensions\robocorp.robotframework-lsp-1.7.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221231 13:54:29.128" rpa="false" schemaversion="3">
+<suite id="s1" name="Robot Interactive Console" source="c:\Users\Ghazaleh\.vscode\extensions\robocorp.robotframework-lsp-1.7.3\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
 <test id="s1-t1" name="Default Task/Test" line="5">
 <kw name="Interpreter Main Loop" library="MainLoop">
-<kw name="Create Session">
-<arg>my</arg>
-<arg>${base_url}</arg>
-<msg timestamp="20221214 14:23:37.915" level="FAIL">No keyword with name 'Create Session' found.</msg>
-<status status="FAIL" starttime="20221214 14:23:37.915" endtime="20221214 14:23:37.915"/>
+<status status="PASS" starttime="20221231 13:54:29.216" endtime="20221231 13:54:34.313"/>
 </kw>
-<kw name="Get Request">
-<var>${response}</var>
-<arg>my</arg>
-<arg>/get_all_staffs</arg>
-<status status="NOT RUN" starttime="20221214 14:23:37.919" endtime="20221214 14:23:37.919"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20221214 14:23:37.920" endtime="20221214 14:23:37.920"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20221214 14:23:37.920" endtime="20221214 14:23:37.920"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" starttime="20221214 14:23:37.920" endtime="20221214 14:23:37.920"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20221214 14:23:37.920" endtime="20221214 14:23:37.920"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>200</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="NOT RUN" starttime="20221214 14:23:37.920" endtime="20221214 14:23:37.920"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${body}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<status status="NOT RUN" starttime="20221214 14:23:37.920" endtime="20221214 14:23:37.921"/>
-</kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${body}</arg>
-<arg>admin</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="NOT RUN" starttime="20221214 14:23:37.921" endtime="20221214 14:23:37.921"/>
-</kw>
-<status status="PASS" starttime="20221214 14:23:36.937" endtime="20221214 14:23:38.821"/>
-</kw>
-<status status="PASS" starttime="20221214 14:23:36.936" endtime="20221214 14:23:38.821"/>
+<status status="PASS" starttime="20221231 13:54:29.215" endtime="20221231 13:54:34.314"/>
 </test>
-<status status="PASS" starttime="20221214 14:23:36.900" endtime="20221214 14:23:38.822"/>
+<status status="PASS" starttime="20221231 13:54:29.130" endtime="20221231 13:54:34.315"/>
 </suite>
 <statistics>
 <total>
