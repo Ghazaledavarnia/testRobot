@@ -67,7 +67,11 @@ Update Address
 
 Get Customer Addressess
     create session    mysession    ${base_url}
-    ${response}=    Get Request    mysession    /customer_addresses
+     ${headers}=    Create Dictionary
+    ...    access=${accesstoken}
+    ...    refresh=${refreshtoken}
+    ...    Content-Type=application/json
+    ${response}=    Get Request    mysession    /customer_addresses   headers=${headers}
 
     Log To Console    ${response.content}
     Log To Console    ${response.status_code}
