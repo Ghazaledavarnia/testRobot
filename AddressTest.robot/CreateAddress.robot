@@ -71,7 +71,7 @@ Get Customer Addressess
     ...    access=${accesstoken}
     ...    refresh=${refreshtoken}
     ...    Content-Type=application/json
-    ${response}=    Get Request    mysession    /customer_addresses   headers=${headers}
+    ${response}=    Get Request    mysession    /customer_addresses/100   headers=${headers}
 
     Log To Console    ${response.content}
     Log To Console    ${response.status_code}
@@ -79,3 +79,15 @@ Get Customer Addressess
     #validatioin
     ${status_code}=    convert to string    ${response.status_code}
     Should Be Equal    ${status_code}    200
+
+Delete Customer Address
+   Create Session    myseesion    ${base_url}
+   ${headers}=     Create Dictionary
+   ...    access=${accesstoken}
+    ...    refresh=${refreshtoken}
+    ...    Content-Type=application/json
+    ${response} =  Delete Request    myseesion    /delete_address/100    headers=${headers}
+
+      Log To Console    ${response.content}
+      Log To Console    ${response.status_code}
+
