@@ -1,79 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20230101 16:25:01.357" rpa="false" schemaversion="3">
-<suite id="s1" name="CreateAddress" source="c:\Users\Ghazaleh\Desktop\testNew\AddressTest.robot\CreateAddress.robot">
-<test id="s1-t1" name="Update Address" line="45">
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20230104 12:11:12.951" rpa="false" schemaversion="3">
+<suite id="s1" name="Login" source="c:\Users\Ghazaleh\Desktop\testNew\AddressTest.robot\Login.robot">
+<test id="s1-t1" name="Checking Login Password" line="12">
+<kw name="Create List" library="BuiltIn">
+<var>${auth}</var>
+<arg>09302828801</arg>
+<arg>Zahra100%</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20230104 12:11:14.587" level="INFO">${auth} = ['09302828801', 'Zahra100%']</msg>
+<status status="PASS" starttime="20230104 12:11:14.587" endtime="20230104 12:11:14.597"/>
+</kw>
 <kw name="Create Session" library="RequestsLibrary">
 <arg>session</arg>
 <arg>${base_url}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230101 16:25:01.910" level="INFO">Creating Session using : alias=session, url=https://devpapi.aasood.com/address/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20230101 16:25:01.909" endtime="20230101 16:25:01.914"/>
+<msg timestamp="20230104 12:11:14.598" level="INFO">Creating Session using : alias=session, url=https://devapi.aasood.com/customer/api/v1/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230104 12:11:14.598" endtime="20230104 12:11:14.599"/>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>access=${accesstoken}</arg>
-<arg>refresh=${refreshtoken}</arg>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230101 16:25:01.915" level="INFO">${headers} = {'access': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzI0ODIzMDcsImlhdCI6MTY3MjQ4MTEwNywic3ViIjp7InN0YWZmX2lkIjo0NCwidXNlcm5hbWUiOiJwb3NodGliYW4ifSwic2NvcGUiOiJhY2Nlc3MifQ.ZC800Z2DqqJdDPOV9LFV...</msg>
-<status status="PASS" starttime="20230101 16:25:01.915" endtime="20230101 16:25:01.915"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${body}</var>
-<arg>stateName= "تهران"</arg>
-<arg>stateId= "05"</arg>
-<arg>cityId= "1771"</arg>
-<arg>cityName= "تهران"</arg>
-<arg>regionCode= "string"</arg>
-<arg>nbName= "string"</arg>
-<arg>nbId= "string"</arg>
-<arg>street= "سی متری نیرو هوایی"</arg>
-<arg>alley=""</arg>
-<arg>plaque= "16"</arg>
-<arg>unit= "8"</arg>
-<arg>tel= "09124988430"</arg>
-<arg>postalCode= "168994449"</arg>
-<arg>isDefault= true</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230101 16:25:01.918" level="INFO">${body} = {'stateName': ' "تهران"', 'stateId': ' "05"', 'cityId': ' "1771"', 'cityName': ' "تهران"', 'regionCode': ' "string"', 'nbName': ' "string"', 'nbId': ' "string"', 'street': ' "سی متری نیرو هوایی"', 'al...</msg>
-<status status="PASS" starttime="20230101 16:25:01.915" endtime="20230101 16:25:01.918"/>
-</kw>
-<kw name="Put Request" library="RequestsLibrary">
+<kw name="Post Request" library="RequestsLibrary">
 <var>${response}</var>
 <arg>session</arg>
-<arg>/update_fields/100</arg>
-<arg>data=${body}</arg>
-<arg>headers=${headers}</arg>
-<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
-<msg timestamp="20230101 16:25:01.918" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
-<msg timestamp="20230101 16:25:02.000" level="INFO">PUT Request : url=https://devpapi.aasood.com/address/api/v1/update_fields/100 
- path_url=/address/api/v1/update_fields/100 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'access': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzI0ODIzMDcsImlhdCI6MTY3MjQ4MTEwNywic3ViIjp7InN0YWZmX2lkIjo0NCwidXNlcm5hbWUiOiJwb3NodGliYW4ifSwic2NvcGUiOiJhY2Nlc3MifQ.ZC800Z2DqqJdDPOV9LFVCBFQbDOjnOobCgGz8vFNL2s', 'refresh': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzQyMDkxMDcsImlhdCI6MTY3MjQ4MTEwNywic3ViIjp7InN0YWZmX2lkIjo0NCwidXNlcm5hbWUiOiJwb3NodGliYW4ifSwic2NvcGUiOiJyZWZyZXNoIn0.vhz-9S8TNdHDLVBnxXxwFs6151UIkgavUVUBdni92rA', 'Content-Type': 'application/json', 'Content-Length': '474'} 
- body={"stateName": " \"\u062a\u0647\u0631\u0627\u0646\"", "stateId": " \"05\"", "cityId": " \"1771\"", "cityName": " \"\u062a\u0647\u0631\u0627\u0646\"", "regionCode": " \"string\"", "nbName": " \"string\"", "nbId": " \"string\"", "street": " \"\u0633\u06cc \u0645\u062a\u0631\u06cc \u0646\u06cc\u0631\u0648 \u0647\u0648\u0627\u06cc\u06cc\"", "alley": "\"\"", "plaque": " \"16\"", "unit": " \"8\"", "tel": " \"09124988430\"", "postalCode": " \"168994449\"", "isDefault": " true"} 
+<arg>/auth/login/password</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20230104 12:11:14.600" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20230104 12:11:14.868" level="INFO">POST Request : url=https://devapi.aasood.com/customer/api/v1/auth/login/password (redirected) 
+ path_url=/customer/api/v1/auth/login/password 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
  </msg>
-<msg timestamp="20230101 16:25:02.001" level="INFO">PUT Response : url=https://devpapi.aasood.com/address/api/v1/update_fields/100 
- status=404, reason=Not Found 
- headers={'Server': 'ArvanCloud', 'Date': 'Sun, 01 Jan 2023 12:55:02 GMT', 'Content-Type': 'application/json', 'Content-Length': '11', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=65', 'AR-SID': '2013', 'AR-ATIME': '0.016', 'AR-Request-ID': '09adbc810dafad2391877ae8ae2ecc1f'} 
- body="Not Found" 
+<msg timestamp="20230104 12:11:14.868" level="INFO">GET Response : url=https://devapi.aasood.com/customer/api/v1/auth/login/password/ 
+ status=200, reason=OK 
+ headers={'Server': 'ArvanCloud', 'Date': 'Wed, 04 Jan 2023 08:41:14 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=65', 'Vary': 'Accept-Encoding', 'access-control-allow-origin': '*', 'access-control-max-age': '3600', 'access-control-expose-headers': '*', 'access-control-allow-methods': 'GET, POST, OPTIONS, PUT, DELETE', 'access-control-allow-headers': '*', 'Expires': 'Wed, 04 Jan 2023 08:41:14 GMT', 'Cache-Control': 'max-age=0', 'X-XSS-Protection': '1; mode=block', 'AR-SID': '2053', 'AR-ATIME': '0.019', 'AR-CACHE': 'BYPASS', 'AR-Request-ID': 'ed2b88edda2263bfeed3bdca432b6d16', 'Content-Encoding': 'gzip'} 
+ body={"customerPhoneNumber":{"title":"شماره موبایل","description":"phone number must be string and len 11 character","name":"customerPhoneNumber","placeholder":"09371654426","minLength":11,"maxLength":11,"dataType":"string","type":"string","isRquired":true,"regexPattern":"^09[0-9]{9}$"},"customerPassword":{"title":"رمز عبور","description":"password must be string and len between 8 and 32 character","name":"customerPassword","placeholder":"qwer1234QWER","minLength":8,"maxLength":32,"dataType":"string","type":"string","isRquired":true,"regexPattern":"^([a-zA-Z0-9'!#$%&amp;'*+/=?^_`{|}~.-]{6,32})"},"customerType":{"title":"نوع مشتری","name":"customerType","minLength":1,"maxLength":4,"dataType":"string","type":"hidden","regexPattern":"","isRquired":false,"allOf":[{"$ref":"#/definitions/CustomerType"}]}} 
  </msg>
-<msg timestamp="20230101 16:25:02.001" level="INFO">c:\ProgramData\robocorp\ht\dd59308_b1f3c24_1c0bc041\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'devpapi.aasood.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20230104 12:11:14.869" level="INFO">c:\ProgramData\robocorp\ht\dd59308_b1f3c24_1c0bc041\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'devapi.aasood.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(
+c:\ProgramData\robocorp\ht\dd59308_b1f3c24_1c0bc041\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'devapi.aasood.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20230101 16:25:02.002" level="INFO">${response} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20230101 16:25:01.918" endtime="20230101 16:25:02.002"/>
+<msg timestamp="20230104 12:11:14.870" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230104 12:11:14.599" endtime="20230104 12:11:14.871"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
+<arg>{response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230101 16:25:02.003" endtime="20230101 16:25:02.004"/>
+<status status="PASS" starttime="20230104 12:11:14.872" endtime="20230104 12:11:14.873"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230101 16:25:02.005" endtime="20230101 16:25:02.006"/>
-</kw>
-<status status="PASS" starttime="20230101 16:25:01.908" endtime="20230101 16:25:02.007"/>
+<status status="PASS" starttime="20230104 12:11:14.585" endtime="20230104 12:11:14.874"/>
 </test>
-<status status="PASS" starttime="20230101 16:25:01.365" endtime="20230101 16:25:02.009"/>
+<status status="PASS" starttime="20230104 12:11:12.971" endtime="20230104 12:11:14.876"/>
 </suite>
 <statistics>
 <total>
@@ -82,10 +56,10 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="CreateAddress">CreateAddress</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Login">Login</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20230101 16:25:01.918" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
+<msg timestamp="20230104 12:11:14.600" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
 </errors>
 </robot>
