@@ -2,6 +2,7 @@
 Library     RequestsLibrary
 Library     Collections
 Library     OperatingSystem
+Library    RPA.JSON
 
 
 
@@ -15,4 +16,10 @@ Checking Login Password
 
    ${response}=  Post Request    session    /auth/login/password 
    Log To Console    {response.content}
-   
+   Log To Console    {response.status_code}
+
+   #validatioin
+
+   ${a}=   Convert to string    ${response.content}
+   ${res_body}=   Convert String to JSON    ${a}
+    Log To Console   {res_body}
