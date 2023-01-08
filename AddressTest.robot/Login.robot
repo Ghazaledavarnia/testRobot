@@ -20,6 +20,5 @@ Checking Login Password
 
    #validatioin
 
-   ${a}=   Convert to string    ${response.content}
-   ${res_body}=   Convert String to JSON    ${a}
-    Log To Console   {res_body}
+   ${a}=   to json    ${response.content}
+    Log To Console    {a}
