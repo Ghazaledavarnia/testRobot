@@ -19,6 +19,6 @@ Checking Login Password
    Log To Console    {response.status_code}
 
    #validatioin
-
-   ${a}=   to json    ${response.content}
-    Log To Console    {a}
+    ${res_body}=    to json   ${response.content}
+    should contain   ${res_body}   ey
+    Log To Console     ${res_body}
