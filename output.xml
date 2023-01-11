@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20230109 13:44:37.648" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20230111 16:53:09.561" rpa="false" schemaversion="3">
 <suite id="s1" name="Credit" source="c:\Users\Ghazaleh\Desktop\testNew\AddressTest.robot\Credit.robot">
-<test id="s1-t1" name="request credit" line="24">
+<test id="s1-t1" name="request credit" line="27">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>Session</arg>
 <arg>${base_url}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230109 13:44:38.183" level="INFO">Creating Session using : alias=Session, url=https://devapi.aasood.com/credit/api/v1/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20230109 13:44:38.182" endtime="20230109 13:44:38.186"/>
+<msg timestamp="20230111 16:53:10.520" level="INFO">Creating Session using : alias=Session, url=https://devapi.aasood.com/credit/api/v1, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230111 16:53:10.518" endtime="20230111 16:53:10.523"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
@@ -15,18 +15,18 @@
 <arg>refresh=${refresh}</arg>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230109 13:44:38.187" level="INFO">${headers} = {'access': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzMyNTcwMTYsImlhdCI6MTY3MzI1NTgxNiwic3ViIjp7InVzZXJfaWQiOjIwMDA4LCJjdXN0b21lcl90eXBlIjpbIkIyQiJdLCJwaG9uZV9udW1iZXIiOiIwOTMwMjgyODgwMSJ9LCJ...</msg>
-<status status="PASS" starttime="20230109 13:44:38.186" endtime="20230109 13:44:38.188"/>
+<msg timestamp="20230111 16:53:10.527" level="INFO">${headers} = {'access': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzM0NDQzNjYsImlhdCI6MTY3MzQ0MzE2Niwic3ViIjp7InVzZXJfaWQiOjIwMDA4LCJjdXN0b21lcl90eXBlIjpbIkIyQiJdLCJwaG9uZV9udW1iZXIiOiIwOTMwMjgyODgwMSJ9LCJ...</msg>
+<status status="PASS" starttime="20230111 16:53:10.524" endtime="20230111 16:53:10.527"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${body}</var>
-<arg>amount=0</arg>
-<arg>paymentType="pose"</arg>
+<arg>amount=10000000</arg>
+<arg>paymentType="cheque"</arg>
 <arg>description= "string"</arg>
 <arg>accepted= "pending"</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20230109 13:44:38.189" level="INFO">${body} = {'amount': '0', 'paymentType': '"pose"', 'description': ' "string"', 'accepted': ' "pending"'}</msg>
-<status status="PASS" starttime="20230109 13:44:38.188" endtime="20230109 13:44:38.189"/>
+<msg timestamp="20230111 16:53:10.529" level="INFO">${body} = {'amount': '10000000', 'paymentType': '"cheque"', 'description': ' "string"', 'accepted': ' "pending"'}</msg>
+<status status="PASS" starttime="20230111 16:53:10.529" endtime="20230111 16:53:10.530"/>
 </kw>
 <kw name="Post Request" library="RequestsLibrary">
 <var>${response}</var>
@@ -35,49 +35,49 @@
 <arg>data=${body}</arg>
 <arg>headers=${headers}</arg>
 <doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
-<msg timestamp="20230109 13:44:38.190" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20230109 13:44:38.456" level="INFO">POST Request : url=https://devapi.aasood.com/credit/api/v1/request_credit 
+<msg timestamp="20230111 16:53:10.531" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20230111 16:53:10.687" level="INFO">POST Request : url=https://devapi.aasood.com/credit/api/v1/request_credit 
  path_url=/credit/api/v1/request_credit 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'access': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzMyNTcwMTYsImlhdCI6MTY3MzI1NTgxNiwic3ViIjp7InVzZXJfaWQiOjIwMDA4LCJjdXN0b21lcl90eXBlIjpbIkIyQiJdLCJwaG9uZV9udW1iZXIiOiIwOTMwMjgyODgwMSJ9LCJzY29wZSI6ImFjY2VzcyIsImV4cGlyZWQiOmZhbHNlfQ.DCBrvl014s7QKYYSeM4xruU60RoQ-7aWMLOExejEhIU', 'refresh': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzQ5ODM4MTYsImlhdCI6MTY3MzI1NTgxNiwic3ViIjp7InVzZXJfaWQiOjIwMDA4LCJjdXN0b21lcl90eXBlIjpbIkIyQiJdLCJwaG9uZV9udW1iZXIiOiIwOTMwMjgyODgwMSJ9LCJzY29wZSI6InJlZnJlc2giLCJleHBpcmVkIjpmYWxzZX0.e7Bnesy4R8tjuwk9T15xYDELdMUQ8w6AN7T62paNlug', 'Content-Type': 'application/json', 'Content-Length': '100'} 
- body={"amount": "0", "paymentType": "\"pose\"", "description": " \"string\"", "accepted": " \"pending\""} 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'access': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzM0NDQzNjYsImlhdCI6MTY3MzQ0MzE2Niwic3ViIjp7InVzZXJfaWQiOjIwMDA4LCJjdXN0b21lcl90eXBlIjpbIkIyQiJdLCJwaG9uZV9udW1iZXIiOiIwOTMwMjgyODgwMSJ9LCJzY29wZSI6ImFjY2VzcyIsImV4cGlyZWQiOmZhbHNlfQ.iP7tLJ2smK7BoIVY8Zfs9vdv_reOdLFew-1SR42DATo', 'refresh': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzUxNzExNjYsImlhdCI6MTY3MzQ0MzE2Niwic3ViIjp7InVzZXJfaWQiOjIwMDA4LCJjdXN0b21lcl90eXBlIjpbIkIyQiJdLCJwaG9uZV9udW1iZXIiOiIwOTMwMjgyODgwMSJ9LCJzY29wZSI6InJlZnJlc2giLCJleHBpcmVkIjpmYWxzZX0.5ZR2U4wHvuFtNjElP3Qam4WFxU3T3dNBk6ZfrmUAaKw', 'Content-Type': 'application/json', 'Content-Length': '109'} 
+ body={"amount": "10000000", "paymentType": "\"cheque\"", "description": " \"string\"", "accepted": " \"pending\""} 
  </msg>
-<msg timestamp="20230109 13:44:38.456" level="INFO">POST Response : url=https://devapi.aasood.com/credit/api/v1/request_credit 
+<msg timestamp="20230111 16:53:10.687" level="INFO">POST Response : url=https://devapi.aasood.com/credit/api/v1/request_credit 
  status=422, reason=Unprocessable Entity 
- headers={'Server': 'ArvanCloud', 'Date': 'Mon, 09 Jan 2023 10:14:36 GMT', 'Content-Type': 'application/json', 'Content-Length': '58', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=65', 'access-control-allow-origin': '*', 'access-control-expose-headers': '*', 'access-control-allow-headers': '*', 'AR-SID': '2060', 'AR-ATIME': '0.088', 'AR-Request-ID': 'c41f70bd525610669f8d795b2337b52f'} 
+ headers={'Server': 'ArvanCloud', 'Date': 'Wed, 11 Jan 2023 13:23:09 GMT', 'Content-Type': 'application/json', 'Content-Length': '58', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=65', 'access-control-allow-origin': '*', 'access-control-expose-headers': '*', 'access-control-allow-headers': '*', 'AR-SID': '2010', 'AR-ATIME': '0.043', 'AR-Request-ID': '59c6f0de0d63232c0f963c955e7e8621'} 
  body={"error":"نوع متد پرداخت معتبر نیست"} 
  </msg>
-<msg timestamp="20230109 13:44:38.457" level="INFO">c:\ProgramData\robocorp\ht\dd59308_b1f3c24_1c0bc041\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'devapi.aasood.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20230111 16:53:10.687" level="INFO">c:\ProgramData\robocorp\ht\dd59308_b1f3c24_1c0bc041\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'devapi.aasood.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20230109 13:44:38.458" level="INFO">${response} = &lt;Response [422]&gt;</msg>
-<status status="PASS" starttime="20230109 13:44:38.190" endtime="20230109 13:44:38.458"/>
+<msg timestamp="20230111 16:53:10.688" level="INFO">${response} = &lt;Response [422]&gt;</msg>
+<status status="PASS" starttime="20230111 16:53:10.531" endtime="20230111 16:53:10.688"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230109 13:44:38.459" endtime="20230109 13:44:38.460"/>
+<status status="PASS" starttime="20230111 16:53:10.689" endtime="20230111 16:53:10.691"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>${response.status_code}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230109 13:44:38.461" endtime="20230109 13:44:38.462"/>
+<status status="PASS" starttime="20230111 16:53:10.692" endtime="20230111 16:53:10.693"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
 <var>${status_code}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20230109 13:44:38.464" level="INFO">${status_code} = 422</msg>
-<status status="PASS" starttime="20230109 13:44:38.463" endtime="20230109 13:44:38.464"/>
+<msg timestamp="20230111 16:53:10.695" level="INFO">${status_code} = 422</msg>
+<status status="PASS" starttime="20230111 16:53:10.694" endtime="20230111 16:53:10.695"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${status_code}</arg>
 <arg>200</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<msg timestamp="20230109 13:44:38.466" level="FAIL">422 != 200</msg>
-<status status="FAIL" starttime="20230109 13:44:38.465" endtime="20230109 13:44:38.467"/>
+<msg timestamp="20230111 16:53:10.697" level="FAIL">422 != 200</msg>
+<status status="FAIL" starttime="20230111 16:53:10.696" endtime="20230111 16:53:10.700"/>
 </kw>
-<status status="FAIL" starttime="20230109 13:44:38.181" endtime="20230109 13:44:38.468">422 != 200</status>
+<status status="FAIL" starttime="20230111 16:53:10.515" endtime="20230111 16:53:10.701">422 != 200</status>
 </test>
-<status status="FAIL" starttime="20230109 13:44:37.655" endtime="20230109 13:44:38.471"/>
+<status status="FAIL" starttime="20230111 16:53:09.576" endtime="20230111 16:53:10.704"/>
 </suite>
 <statistics>
 <total>
@@ -90,6 +90,6 @@
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20230109 13:44:38.190" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20230111 16:53:10.531" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
 </errors>
 </robot>
