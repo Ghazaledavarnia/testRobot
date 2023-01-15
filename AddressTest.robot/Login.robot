@@ -6,24 +6,23 @@ Library     RPA.JSON
 
 
 *** Variables ***
-${base_url}     https://devapi.aasood.com/customer/api/v1/
+${base_url}     https://devapi.aasood.com/customer/api/v1
 
 
 *** Test Cases ***
 Checking Login Password
-    ${auth}=    Create List    09302828801    Zahra100%
-    Create Session    session    ${base_url}
+    ${headers}=    Create Dictionary
+    ...    Content-Type=application/json
+    ...    accept=application/json
 
-    ${response}=    Post Request    session    /auth/login/password
-    Log To Console    {response.content}
-    Log To Console    {response.status_code}
+    ${body}=    Create Dictionary
+    ...    customerPhoneNumber=09302828801
+    ...    customerPassword=Zahra100%
+    ...    customerType=B2B
 
-    #validatioin
-    ${res_header}=    to json    ${response.header}
-    #    should contain    ${res_body}    ey
-    Log To Console    ${res_header}
+    Create Session    session    ${base_url}    headers=${headers}
+    ${resp}=    POST On Session    session    /auth/login/password    json=${body}
+    Status Should Be    OK    ${resp}
 
-    ${value_accesstoken}=    Get value from JSON    ${res_header}    $.accesstoken
-    ${value_refreshtoken}=    Get value from JSON    ${res_header}    $.refreshtoken
-    Log To Console    ${value_accesstoken}
-    Log To Console    ${value_refreshtoken}
+    ${value_accesstoken}=    Set Variable    ${resp.headers['accesstoken']}
+    ${value_refreshtoken}=    Set Variable    ${resp.headers['refreshtoken']}
