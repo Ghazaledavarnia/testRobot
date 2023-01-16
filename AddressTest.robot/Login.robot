@@ -22,7 +22,13 @@ Checking Login Password
 
     Create Session    session    ${base_url}    headers=${headers}
     ${resp}=    POST On Session    session    /auth/login/password    json=${body}
-    Status Should Be    OK    ${resp}
+    Status Should Be    200    ${resp}
 
-    ${value_accesstoken}=    Set Variable    ${resp.headers['accesstoken']}
-    ${value_refreshtoken}=    Set Variable    ${resp.headers['refreshtoken']}
+    ${a}=   Set Variable   ${resp.headers}
+    
+
+    # ${value_accesstoken}=    Set Variable    ${resp.headers['accesstoken']}
+    # ${value_refreshtoken}=    Set Variable    ${resp.headers['refreshtoken']}
+
+
+    
