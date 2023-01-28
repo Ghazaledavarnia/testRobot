@@ -15,6 +15,6 @@ temp/
 testrun/*
 .~lock*
 *.pkl
-log.html
-output.xml
-report.html
+*log.html
+*output.xml
+*report.html
