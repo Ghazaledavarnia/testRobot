@@ -6,7 +6,7 @@ Library     RequestsLibrary
 #ENDPOINTS
 ${BASE_URL}         https://devpapi.aasood.com/customer/api/v1
 ${CUSTOMER}         /profile/customer
-#HEADERS
+
 ${ACCESS}
 ...                 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzQ2NTIxOTAsImlhdCI6MTY3NDY1MDk5MCwic3ViIjp7InVzZXJfaWQiOjIwNzg2LCJjdXN0b21lcl90eXBlIjpbIkIyQiJdLCJwaG9uZV9udW1iZXIiOiIwOTEyNDk4ODQzMCJ9LCJzY29wZSI6ImFjY2VzcyIsImV4cGlyZWQiOmZhbHNlfQ.jTEeRzMqp3lPvFFIbgSdUgRWf4mfUztGjIZPAqQOST8
 ${REFRESH}
@@ -23,7 +23,7 @@ Get Customer Profile
     ...    refresh=${REFRESH}
     ...    Content-Type=${CONTENT_TYPE}
 
-    Create Session    Get profile    ${base_url}
+    Create Session    Get profile    ${base_url}    headers=${HEADERS}
     ${response}=    Get Request
     ...    Get profile
     ...    uri=${CUSTOMER}?customerMobileNumber=${MOBILE_NUMBER}
