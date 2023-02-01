@@ -11,6 +11,10 @@ ${CREATEDEALERSHIP}
 ...                         /product_credit
 ${ACCEPTDEALER}
 ...                         /product_credit
+...
+${REQUESTCREDIT}            /request_credit
+${ACCEPTCREDIT}             /accept_credit
+
 #HEADERS
 ${ACCESS_DEALER}
 ...                         eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzQ5ODMzNzgsImlhdCI6MTY3NDk4MjE3OCwic3ViIjp7ImN1c3RvbWVyIjp7ImNybV9nZXRfcHJvZmlsZSI6e30sImdldF9hbGxfaW5mb3JtYWxfcGVyc29ucyI6e30sImdldF9jdXN0b21lcnNfZ3JpZF9kYXRhX2FjY291bnRpbmciOnt9LCJnZXRfaW5mb3JtYWxfcGVyc29ucyI6e30sImdldF9kZWFsZXJzaGlwc19saXN0Ijp7fSwiZ2V0X2N1c3RvbWVyc19ncmlkX2RhdGEiOnt9LCJyZWdpc3Rlcl9kZWFsZXJzaGlwIjp7fX0sInByb2R1Y3QiOnsiZ2V0X2l0ZW1zIjp7fSwiYWRkX2F0dHJpYnV0ZXMiOnt9LCJhZGRfY3JlZGl0X2J5X2NhdGVnb3J5Ijp7fSwiY3JlYXRlX2N1c3RvbV9jYXRlZ29yeSI6e30sImNyZWF0ZV9jdXN0b21fa293c2FyX2NhdGVnb3J5Ijp7fSwiY3JlYXRlX2tvd3Nhcl9ncm91cCI6e30sImNyZWF0ZV9wcm9kdWN0Ijp7fSwiY3JlYXRlX3N5c3RlbV9jb2RlIjp7fSwiZGVsZXRlX2N1c3RvbV9jYXRlZ29yeSI6e30sImVkaXRfY3VzdG9tX2NhdGVnb3J5Ijp7fSwiZWRpdF9wcm9kdWN0Ijp7fSwiZ2V0X2FsbF9jYXRlZ29yaWVzIjp7fSwiZ2V0X2NhdGVnb3JpZXNfcHJvZHVjdHMiOnt9LCJnZXRfY3VzdG9tX2NhdGVnb3J5X2xpc3QiOnt9LCJnZXRfa293c2FyX2l0ZW1zIjp7fSwiZ2V0X2tvd3Nhcl9sb2dzIjp7fSwiZ2V0X2tvd3Nhcl9zeXN0ZW1fY29kZSI6e30sImdldF9tYWluX21hbnVfYmFubmVycyI6e30sImdldF9wcm9kdWN0X2F0dHJpYnV0ZXMiOnt9LCJnZXRfcHJvZHVjdF9iYWNrb2ZmaWNlIjp7fSwiZ2V0X3Byb2R1Y3RfbGlzdF9iYWNrX29mZmljZSI6e30sImdldF9wcm9kdWN0X3N0b2NrIjp7fSwia293c2FyX3JlZG8iOnt9LCJzZXRfbWFpbl9tZW51X2Jhbm5lcnMiOnt9LCJzZXRfcHJvZHVjdF9wcmljZSI6e30sInNldF9wcm9kdWN0X3F1YW50aXR5Ijp7fSwidXBkYXRlX3Byb2R1Y3RfcHJpY2UiOnt9LCJ1cGRhdGVfcHJvZHVjdF9xdWFudGl0eSI6e319fSwic2NvcGUiOiJhY2Nlc3MifQ.Fym7MebWIbkl0dFwtGIJ62u0LFIrPAuuSapnd-Si2Ak
@@ -79,7 +83,7 @@ Register Dealership
     Should Be Equal As Strings    ${response.status_code}    200
 
 Request Dealership Credit
-    Create Session    session    ${base_url_credit}
+    Create Session    REQUESTCREDITDEALER    ${base_url_credit}
     ${body}=    Create Dictionary
     ...    customerId= 0
     ...    customerName= string
@@ -87,12 +91,12 @@ Request Dealership Credit
     ...    amount= 0
     ...    paymentType= string
     ...    description= string
-    ${response}=    POST Request    session    /request_credit    json=${body}
+    ${response}=    POST Request    REQUESTCREDITDEALER    ${REQUESTCREDIT}    json=${body}
 
 Accept Credit
-    Create Session    session    ${base_url}
+    Create Session    ACCEPTCREDIT    ${base_url_credit}
     ${body}=    Create Dictionary    referralNumber="12"    status="accept"
-    ${response}=    Post Request    session    /accept_credit    json=${body}
+    ${response}=    Post Request    ACCEPTCREDIT    ${ACCEPTCREDIT}    json=${body}
 
 Create sell request
 #    /**درخواست کالا/
