@@ -90,7 +90,7 @@ Request Dealership Credit
     ...    customerTelephone= string
     ...    amount= 0
     ...    paymentType= string
-    ...    description= string
+    ...    description= string    
     ${response}=    POST Request    REQUESTCREDITDEALER    ${REQUESTCREDIT}    json=${body}
 
 Accept Credit
