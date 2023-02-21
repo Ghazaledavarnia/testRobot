@@ -15,16 +15,17 @@ ${REFRESH}
 
 ${CONTENT_TYPE}     application/json
 
-${HEADERS}          Create Dictionary    Content-Type=${CONTENT_TYPE}    access=${ACCESS}    refresh=${REFRESH}
-
 
 *** Test Cases ***
 Add_Coupon_To_Cart
-    Create Session    coupon    ${base_url}    headers=${HEADERS}
-    ${body}=    Create Dictionary    token=aasood
-    ${response}=    POST On Session    coupon    /coupon/add    json=${body}
-    Should Be Equal As Strings    ${response.status_code}    200
+    ${headers}=    Create Dictionary
+    ...    access=${ACCESS}
+    ...    refresh=${REFRESH}
+    ...    Content-Type=${CONTENT_TYPE}
 
-    #VALIDATIONS
-    ${response_content}=    Convert To String    ${response.Content}
-    Log To Console    message
+    ${body}=    Create Dictionary
+    ...    token=STRING-BEA5
+
+    Create Session    addCoupon    ${base_url}
+    ${response}=    Post Request    addCoupon    /coupon/add    data=${body}    headers=${headers}
+    Status Should Be    200    ${response.status_code}
